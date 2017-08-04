@@ -1,0 +1,75 @@
+version: '3'
+services:
+  front:
+    image: nginx:latest
+    volumes:
+        - ./front-nginx.conf:/etc/nginx/nginx.conf
+    ports:
+        - "80:80"
+    links:
+        - front-project1
+        - front-project2
+        - front-project3
+
+  back:
+    image: nginx:latest
+    volumes:
+        - ./back-nginx.conf:/etc/nginx/nginx.conf
+    ports:
+        - "8080:8080"
+    links:
+        - back-project1
+        - back-project2
+        - back-project3
+
+  front-project1:
+    image: node:latest
+    volumes:
+        - /Users/BDK/myfile/edu/前端设计/视频录制/project/web/maoyan-front:/usr/src/maoyan-front
+    command: node /usr/src/maoyan-front/bin/www
+    expose:
+        - "3000"
+
+  front-project2:
+    image: node:latest
+    volumes:
+        - /Users/BDK/myfile/edu/前端设计/视频录制/project/web/maoyan-front:/usr/src/maoyan-front
+    command: node /usr/src/maoyan-front/bin/www
+    expose:
+        - "3000"
+
+  front-project3:
+    image: node:latest
+    volumes:
+        - /Users/BDK/myfile/edu/前端设计/视频录制/project/web/maoyan-front:/usr/src/maoyan-front
+    command: node /usr/src/maoyan-front/bin/www
+    expose:
+        - "3000"
+
+  back-project1:
+    build: ./
+    expose:
+        - "8080"
+    links:
+        - maoyan-db
+
+  back-project2:
+    build: ./
+    expose:
+        - "8080"
+    links:
+        - maoyan-db
+
+  back-project3:
+    build: ./
+    expose:
+        - "8080"
+    links:
+        - maoyan-db
+
+  maoyan-db:
+    image: mysql:latest
+    ports:
+        - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=maoyan
