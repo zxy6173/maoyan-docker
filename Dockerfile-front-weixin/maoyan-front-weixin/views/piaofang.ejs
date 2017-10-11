@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <%-font%>
+    
+    <link rel="stylesheet" type="text/css" href="css/ticket.css">
+    <title>猫眼专业版</title>
+    
+</head>
+
+<body class="has-bar" data-ymd="2017-10-04" style="">
+    
+    <header class="navBar ">
+        <h1 class="nav-header navBarTitle" style="margin-top: .16rem;">实时票房</h1>
+    </header>
+    
+   
+    <div id="ticket_content">
+        <%-indentOut%>
+        <div class="ticketList">
+            <ul id="ticketList_Title" class="title clearfix">
+                <li class="c1">片名</li>
+                <li class="c2" id="ticket-day">当日票房
+                    <div>（万元）</div>
+                </li>
+                <li class="c3">票房占比</li>
+                <li class="c4">排片占比</li>
+                <li class="c5">上座率</li>
+            </ul>
+           <%-content%>
+        </div>
+    </div>
+
+</body>
+
+</html>
